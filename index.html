@@ -46,12 +46,20 @@
         --font-display: "Manrope", "Segoe UI", sans-serif;
         --font-body: "Inter", "Segoe UI", sans-serif;
         --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+
+        /* Container: fluid. Content fills the window minus a side gutter that scales with the window
+           (20px on phones, ~5% on desktops), capped only on ultrawide screens. */
+        --wrap-max: 2200px;
+        --gutter: clamp(20px, 5vw, 110px);
+        --header-h: 68px;
       }
 
       * { box-sizing: border-box; }
       html {
         scroll-behavior: smooth;
-        scroll-padding-top: 84px;
+        scroll-padding-top: calc(var(--header-h) + 16px);
+        /* Text scales with the window: 16px up to ~1440px wide, ~18px at 1920, 20px from ~2400 */
+        font-size: clamp(16px, 0.42vw + 10px, 20px);
       }
 
       body {
@@ -60,7 +68,8 @@
         color: var(--text);
         font-family: var(--font-body);
         line-height: 1.65;
-        font-size: 16px;
+        font-size: 1rem;
+        overflow-x: hidden;
       }
 
       img { max-width: 100%; display: block; }
@@ -90,11 +99,13 @@
         padding: 0;
       }
 
+      /* One container for every band: full-bleed backgrounds, centred content */
       .wrap {
-        max-width: 1140px;
+        width: 100%;
+        max-width: var(--wrap-max);
         margin: 0 auto;
-        padding-left: max(20px, env(safe-area-inset-left));
-        padding-right: max(20px, env(safe-area-inset-right));
+        padding-left: max(var(--gutter), env(safe-area-inset-left));
+        padding-right: max(var(--gutter), env(safe-area-inset-right));
       }
 
       .label {
@@ -125,6 +136,7 @@
       .btn:hover {
         transform: translateY(-1px);
         border-color: var(--accent);
+        text-decoration: none;
       }
 
       .btn.primary {
@@ -148,7 +160,7 @@
         align-items: center;
         justify-content: space-between;
         gap: 20px;
-        min-height: 68px;
+        min-height: var(--header-h);
       }
 
       .mark {
@@ -161,6 +173,8 @@
         font-weight: 800;
         letter-spacing: -0.01em;
       }
+
+      .mark:hover { text-decoration: none; }
 
       .mark i {
         display: grid;
@@ -211,9 +225,9 @@
         position: relative;
         display: grid;
         grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-        gap: 56px;
+        gap: clamp(36px, 5vw, 96px);
         padding-block: 84px 72px;
-        align-items: start;
+        align-items: center;
       }
 
       .intro .label { color: var(--lime); }
@@ -221,7 +235,7 @@
       .intro h1 {
         margin-top: 14px;
         color: #ffffff;
-        font-size: clamp(2.6rem, 5vw, 4rem);
+        font-size: clamp(2.6rem, 5vw, 4.5rem);
         font-weight: 800;
       }
 
@@ -229,7 +243,7 @@
         margin-top: 12px;
         color: #ffffff;
         font-family: var(--font-display);
-        font-size: clamp(1.15rem, 2vw, 1.45rem);
+        font-size: clamp(1.15rem, 2vw, 1.6rem);
         font-weight: 700;
       }
 
@@ -241,7 +255,7 @@
 
       .intro .lede {
         margin-top: 22px;
-        max-width: 60ch;
+        max-width: 62ch;
         color: #c7e6d3;
         font-size: 1.06rem;
       }
@@ -355,7 +369,7 @@
       .metric b {
         display: block;
         font-family: var(--font-display);
-        font-size: clamp(1.9rem, 4vw, 2.5rem);
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
         font-weight: 800;
         color: var(--lime);
         letter-spacing: -0.02em;
@@ -368,7 +382,7 @@
       }
 
       section.sec {
-        padding-block: 88px;
+        padding-block: clamp(64px, 7vw, 120px);
       }
 
       section.sec.alt {
@@ -386,14 +400,14 @@
 
       .sec-head h2 {
         margin-top: 10px;
-        font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+        font-size: clamp(1.75rem, 3.2vw, 2.6rem);
         font-weight: 800;
         letter-spacing: -0.02em;
       }
 
       .sec-head p {
         color: var(--muted);
-        max-width: 56ch;
+        max-width: 60ch;
       }
 
       .caps {
@@ -621,7 +635,7 @@
 
       .aws {
         color: #c7e6d3;
-        padding-block: 88px;
+        padding-block: clamp(64px, 7vw, 120px);
         background:
           repeating-radial-gradient(circle at 8% 0%, transparent 0 38px, rgba(180, 236, 108, 0.06) 38px 39px),
           linear-gradient(160deg, var(--hero-2), var(--hero-1));
@@ -776,7 +790,7 @@
 
       .dgrid > .pcard:only-child {
         grid-column: 1 / -1;
-        max-width: 760px;
+        max-width: 64rem;
       }
 
       .pcard.wp-stat {
@@ -915,14 +929,14 @@
       .band .wrap {
         display: grid;
         grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-        gap: 56px;
-        padding-block: 80px;
+        gap: clamp(36px, 5vw, 96px);
+        padding-block: clamp(64px, 7vw, 112px);
       }
 
       .band h2 {
         margin-top: 12px;
         color: #ffffff;
-        font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+        font-size: clamp(1.8rem, 3.4vw, 2.8rem);
         font-weight: 800;
         letter-spacing: -0.02em;
       }
@@ -947,6 +961,8 @@
         padding: 18px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.14);
       }
+
+      .line div { min-width: 0; }
 
       .line small {
         display: block;
@@ -994,6 +1010,36 @@
         padding-block: 20px;
       }
 
+      /* ---------- Big screens ---------- */
+
+      /* Desktop: opening section plus metrics band fill the first screen */
+      @media (min-width: 1100px) and (min-height: 680px) {
+        .intro {
+          display: flex;
+          align-items: center;
+          min-height: min(calc(100vh - var(--header-h) - 8.5rem), 56rem);
+          min-height: min(calc(100svh - var(--header-h) - 8.5rem), 56rem);
+        }
+        .intro .wrap { padding-block: 64px; }
+      }
+
+      /* Laptops and 1440p monitors */
+      @media (min-width: 1440px) {
+        .case { grid-template-columns: 290px minmax(0, 1fr); }
+        .skills { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .sheet .item { grid-template-columns: 124px minmax(0, 1fr); }
+      }
+
+      /* Full HD and wider */
+      @media (min-width: 1680px) {
+        .case { grid-template-columns: 320px minmax(0, 1fr); }
+        .domain { grid-template-columns: 260px minmax(0, 1fr); }
+        .xp .row { grid-template-columns: 230px minmax(0, 1fr) minmax(0, 1.6fr); }
+
+      }
+
+      /* ---------- Tablets and phones ---------- */
+
       @media (max-width: 900px) {
         .intro .wrap,
         .sec-head,
@@ -1009,7 +1055,8 @@
         .caps,
         .more,
         .cred,
-        .skills {
+        .skills,
+        .aws-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
@@ -1044,22 +1091,21 @@
           grid-template-columns: minmax(0, 1fr);
           gap: 14px;
         }
+      }
 
-        section.sec {
-          padding-block: 64px;
+      @media (max-width: 760px) {
+        .top nav a.link {
+          display: none;
         }
       }
 
       @media (max-width: 600px) {
-        .top nav a.link {
-          display: none;
-        }
-
         .caps,
         .more,
         .cred,
         .skills,
-        .dgrid {
+        .dgrid,
+        .aws-grid {
           grid-template-columns: minmax(0, 1fr);
         }
 
@@ -1084,6 +1130,14 @@
         .sheet .item {
           grid-template-columns: minmax(0, 1fr);
           gap: 2px;
+        }
+
+        .pcard.wp-stat {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .pcard.wp-stat .big {
+          grid-row: auto;
         }
 
         .line {
@@ -1144,7 +1198,7 @@
               </div>
               <div class="item">
                 <dt>Visa</dt>
-                <dd>485 Graduate visa till 2030</small></dd>
+                <dd>485 Graduate visa<small>Valid till 2030</small></dd>
               </div>
               <div class="item">
                 <dt>Location</dt>
@@ -1780,4 +1834,2001 @@
             </div>
 
             <div>
-              <h3>AI and delivery
+              <h3>AI and delivery</h3>
+              <div class="stack">
+                <span>Claude API</span><span>ChatGPT API</span><span>LangChain</span><span>Docker</span><span>SonarQube</span><span>CircleCI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="band" id="contact">
+      <div class="wrap">
+        <div>
+          <div class="label">Contact</div>
+          <h2>Let's talk about your next platform.</h2>
+          <p>I'm open to senior full-stack and development lead roles. I have full work rights in Australia and need no sponsorship.</p>
+        </div>
+        <div class="lines">
+          <div class="line">
+            <div><small>Email</small><span class="v" id="email">saurav65069@gmail.com</span></div>
+            <button type="button" id="copy-email">Copy</button>
+          </div>
+          <div class="line">
+            <div><small>LinkedIn</small><a class="v" href="https://www.linkedin.com/in/sauravpokharel" target="_blank" rel="noopener noreferrer">linkedin.com/in/sauravpokharel</a></div>
+          </div>
+          <div class="line">
+            <div><small>Location</small><span class="v">Perth, WA · open to Melbourne</span></div>
+          </div>
+          <div class="line">
+            <div><small>Work rights</small><span class="v">Full work rights · valid to 2030</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap"><span>© 2026 Saurav Pokharel</span><span>Senior Full-Stack Developer · Perth, Australia</span></div>
+    </footer>
+
+    <script>
+      (function () {
+        var btn = document.getElementById("copy-email");
+        var el = document.getElementById("email");
+        if (btn && el) {
+          btn.addEventListener("click", function () {
+            function sel() {
+              var r = document.createRange();
+              r.selectNodeContents(el);
+              var s = getSelection();
+              s.removeAllRanges();
+              s.addRange(r);
+              btn.textContent = "Selected";
+            }
+            try {
+              navigator.clipboard.writeText(el.textContent).then(function () { btn.textContent = "Copied"; }, sel);
+            } catch (e) {
+              sel();
+            }
+            setTimeout(function () { btn.textContent = "Copy"; }, 2000);
+          });
+        }
+
+        var filters = document.querySelectorAll(".f");
+        var domains = document.querySelectorAll(".domain");
+        filters.forEach(function (b) {
+          b.addEventListener("click", function () {
+            var d = b.getAttribute("data-d");
+            filters.forEach(function (x) {
+              var on = x === b;
+              x.classList.toggle("on", on);
+              x.setAttribute("aria-pressed", on ? "true" : "false");
+            });
+            domains.forEach(function (dom) {
+              dom.hidden = d !== "all" && dom.getAttribute("data-d") !== d;
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Saurav Pokharel | Senior Full-Stack Developer & Team Lead</title>
+    <meta
+      name="description"
+      content="Senior full-stack developer and team lead building data, time-series and GIS platforms for Australian agriculture and other industries."
+    />
+    <meta name="theme-color" content="#0d5c36" />
+    <meta property="og:title" content="Saurav Pokharel | Senior Full-Stack Developer & Team Lead" />
+    <meta
+      property="og:description"
+      content="Data, time-series and GIS platforms for Australian agriculture and other domains."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://devsaurav.github.io/" />
+    <meta property="og:image" content="https://devsaurav.github.io/assets/og-image.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7fbf8;
+        --alt: #ecf6ef;
+        --surface: #ffffff;
+        --ink: #0b2618;
+        --text: #29443a;
+        --muted: #5a7466;
+        --line: #d4e5d9;
+        --accent: #0f8a4a;
+        --accent-ink: #ffffff;
+        --accent-soft: #dcf2e3;
+        --lime: #b4ec6c;
+        --lime-ink: #0b2618;
+        --hero-1: #06301d;
+        --hero-2: #0d5c36;
+        --hero-3: #14834b;
+        --band: #08331f;
+        --band-text: #e9f7ee;
+        --band-muted: #a9cdb6;
+        --font-display: "Manrope", "Segoe UI", sans-serif;
+        --font-body: "Inter", "Segoe UI", sans-serif;
+        --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+
+        /* Container: fluid. Content fills the window minus a side gutter that scales with the window
+           (20px on phones, ~5% on desktops), capped only on ultrawide screens. */
+        --wrap-max: 2200px;
+        --gutter: clamp(20px, 5vw, 110px);
+        --header-h: 68px;
+      }
+
+      * { box-sizing: border-box; }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: calc(var(--header-h) + 16px);
+        /* Text scales with the window: 16px up to ~1440px wide, ~18px at 1920, 20px from ~2400 */
+        font-size: clamp(16px, 0.42vw + 10px, 20px);
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        line-height: 1.65;
+        font-size: 1rem;
+        overflow-x: hidden;
+      }
+
+      img { max-width: 100%; display: block; }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover { text-decoration: underline; }
+
+      h1, h2, h3, h4 {
+        margin: 0;
+        color: var(--ink);
+        line-height: 1.2;
+        font-family: var(--font-display);
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      ul, ol {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* One container for every band: full-bleed backgrounds, centred content */
+      .wrap {
+        width: 100%;
+        max-width: var(--wrap-max);
+        margin: 0 auto;
+        padding-left: max(var(--gutter), env(safe-area-inset-left));
+        padding-right: max(var(--gutter), env(safe-area-inset-right));
+      }
+
+      .label {
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 11px 20px;
+        border-radius: 8px;
+        font: 600 0.93rem var(--font-body);
+        text-decoration: none;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        background: var(--surface);
+        cursor: pointer;
+        white-space: nowrap;
+        transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--accent);
+        text-decoration: none;
+      }
+
+      .btn.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--accent-ink);
+      }
+
+      .top {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: color-mix(in srgb, var(--bg) 94%, transparent);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .top .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        min-height: var(--header-h);
+      }
+
+      .mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--ink);
+        font-family: var(--font-display);
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+
+      .mark:hover { text-decoration: none; }
+
+      .mark i {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--hero-3), var(--hero-1));
+        color: var(--lime);
+        font-style: normal;
+        font-size: 0.8rem;
+        letter-spacing: 0.02em;
+      }
+
+      .top nav {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+
+      .top nav a.link {
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      .top nav a.link:hover {
+        color: var(--ink);
+      }
+
+      .top .btn {
+        padding: 8px 16px;
+      }
+
+      .intro {
+        position: relative;
+        overflow: hidden;
+        color: #d7efe0;
+        background:
+          repeating-radial-gradient(circle at 82% 18%, transparent 0 34px, rgba(180, 236, 108, 0.07) 34px 35px),
+          repeating-radial-gradient(circle at 10% 110%, transparent 0 46px, rgba(255, 255, 255, 0.045) 46px 47px),
+          radial-gradient(1200px 500px at 85% -10%, var(--hero-3), transparent 60%),
+          linear-gradient(160deg, var(--hero-2), var(--hero-1));
+      }
+
+      .intro .wrap {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+        gap: clamp(36px, 5vw, 96px);
+        padding-block: 84px 72px;
+        align-items: center;
+      }
+
+      .intro .label { color: var(--lime); }
+
+      .intro h1 {
+        margin-top: 14px;
+        color: #ffffff;
+        font-size: clamp(2.6rem, 5vw, 4.5rem);
+        font-weight: 800;
+      }
+
+      .intro .role {
+        margin-top: 12px;
+        color: #ffffff;
+        font-family: var(--font-display);
+        font-size: clamp(1.15rem, 2vw, 1.6rem);
+        font-weight: 700;
+      }
+
+      .intro .role mark {
+        background: linear-gradient(transparent 62%, rgba(180, 236, 108, 0.45) 62%);
+        color: inherit;
+        padding: 0 2px;
+      }
+
+      .intro .lede {
+        margin-top: 22px;
+        max-width: 62ch;
+        color: #c7e6d3;
+        font-size: 1.06rem;
+      }
+
+      .intro .ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .intro .btn {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.28);
+        color: #ffffff;
+      }
+
+      .intro .btn:hover {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: var(--lime);
+      }
+
+      .intro .btn.primary {
+        background: var(--lime);
+        border-color: var(--lime);
+        color: var(--lime-ink);
+      }
+
+      .sheet {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--surface);
+        overflow: hidden;
+        box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.55);
+      }
+
+      .sheet-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 20px;
+        background: var(--accent-soft);
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .sheet-head .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+      }
+
+      .sheet dl {
+        margin: 0;
+        display: grid;
+      }
+
+      .sheet .item {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr);
+        gap: 12px;
+        padding: 13px 20px;
+        border-top: 1px solid var(--line);
+      }
+
+      .sheet dt {
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding-top: 2px;
+      }
+
+      .sheet dd {
+        margin: 0;
+        color: var(--ink);
+        font-size: 0.94rem;
+        font-weight: 500;
+      }
+
+      .sheet dd small {
+        display: block;
+        color: var(--muted);
+        font-weight: 400;
+        font-size: 0.84rem;
+      }
+
+      .metrics {
+        background: var(--hero-1);
+        border-top: 1px solid rgba(180, 236, 108, 0.18);
+      }
+
+      .metrics .wrap {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .metric {
+        padding: 28px 24px;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .metric:first-child {
+        border-left: 0;
+        padding-left: 0;
+      }
+
+      .metric b {
+        display: block;
+        font-family: var(--font-display);
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
+        font-weight: 800;
+        color: var(--lime);
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .metric span {
+        font-size: 0.9rem;
+        color: #a9cdb6;
+      }
+
+      section.sec {
+        padding-block: clamp(64px, 7vw, 120px);
+      }
+
+      section.sec.alt {
+        background: var(--alt);
+        border-block: 1px solid var(--line);
+      }
+
+      .sec-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 40px;
+        align-items: end;
+        margin-bottom: 44px;
+      }
+
+      .sec-head h2 {
+        margin-top: 10px;
+        font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .sec-head p {
+        color: var(--muted);
+        max-width: 60ch;
+      }
+
+      .caps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .cap {
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--surface);
+        transition: border-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .cap:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      .cap svg {
+        width: 46px;
+        height: 46px;
+        padding: 10px;
+        border-radius: 12px;
+        background: var(--accent-soft);
+        stroke: var(--accent);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cap h3 {
+        margin-top: 16px;
+        font-size: 1.15rem;
+      }
+
+      .cap p {
+        margin-top: 8px;
+        font-size: 0.95rem;
+      }
+
+      .cap ul {
+        list-style: none;
+        display: grid;
+        gap: 6px;
+        margin: 14px 0 0;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .cap li::before {
+        content: "—  ";
+        color: var(--accent);
+      }
+
+      .cases {
+        display: grid;
+        gap: 28px;
+      }
+
+      .case {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 1fr);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--surface);
+        overflow: hidden;
+      }
+
+      .case aside {
+        background: linear-gradient(180deg, var(--accent-soft), var(--surface));
+        border-right: 1px solid var(--line);
+        border-top: 4px solid var(--accent);
+        padding: 28px;
+        display: grid;
+        gap: 16px;
+        align-content: start;
+      }
+
+      .case aside .num {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .case aside h3 {
+        font-size: 1.35rem;
+      }
+
+      .case aside dl {
+        margin: 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .case aside dt {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .case aside dd {
+        margin: 2px 0 0;
+        font-size: 0.9rem;
+        color: var(--ink);
+      }
+
+      .case .body {
+        padding: 28px 32px;
+        display: grid;
+        gap: 20px;
+        min-width: 0;
+      }
+
+      .case .body h4 {
+        margin-bottom: 6px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-family: var(--font-body);
+      }
+
+      .case .body ul {
+        margin: 0;
+        padding-left: 18px;
+        display: grid;
+        gap: 6px;
+      }
+
+      .case .body li::marker {
+        color: var(--accent);
+      }
+
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .stack span {
+        font-family: var(--font-mono);
+        font-size: 0.74rem;
+        padding: 3px 9px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        color: var(--text);
+        background: var(--bg);
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .flow div {
+        padding: 12px 14px;
+        border-left: 1px solid var(--line);
+        min-width: 0;
+      }
+
+      .flow div:first-child {
+        border-left: 0;
+      }
+
+      .flow b {
+        display: block;
+        font-size: 0.84rem;
+        color: var(--ink);
+      }
+
+      .flow span {
+        display: block;
+        font-size: 0.78rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .more {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .more article {
+        background: var(--surface);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .more .who {
+        font-size: 0.8rem;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .more h3 {
+        font-size: 1.05rem;
+      }
+
+      .more p {
+        font-size: 0.92rem;
+      }
+
+      .more .stack {
+        margin-top: auto;
+        padding-top: 8px;
+      }
+
+      .aws {
+        color: #c7e6d3;
+        padding-block: clamp(64px, 7vw, 120px);
+        background:
+          repeating-radial-gradient(circle at 8% 0%, transparent 0 38px, rgba(180, 236, 108, 0.06) 38px 39px),
+          linear-gradient(160deg, var(--hero-2), var(--hero-1));
+      }
+
+      .aws .label { color: var(--lime); }
+
+      .aws h2 { color: #ffffff; }
+
+      .aws .sec-head p { color: #a9cdb6; }
+
+      .aws-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .aws-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .aws-card h3 {
+        color: #ffffff;
+        font-size: 1.05rem;
+      }
+
+      .aws-card p {
+        font-size: 0.92rem;
+        color: #c7e6d3;
+      }
+
+      .aws-card .stack {
+        margin-top: auto;
+        padding-top: 4px;
+      }
+
+      .aws-card .stack span {
+        background: rgba(180, 236, 108, 0.12);
+        border-color: rgba(180, 236, 108, 0.3);
+        color: #e9f7ee;
+      }
+
+      .aws-card.highlight {
+        background: var(--lime);
+        border-color: var(--lime);
+      }
+
+      .aws-card.highlight h3 {
+        color: var(--lime-ink);
+      }
+
+      .aws-card.highlight ul {
+        margin: 0;
+        padding-left: 18px;
+        display: grid;
+        gap: 8px;
+        color: var(--lime-ink);
+        font-size: 0.94rem;
+        font-weight: 500;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 32px;
+      }
+
+      .f {
+        font: 500 0.88rem var(--font-body);
+        padding: 7px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--text);
+        cursor: pointer;
+      }
+
+      .f:hover {
+        border-color: var(--accent);
+      }
+
+      .f.on {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--accent-ink);
+      }
+
+      .domains {
+        display: grid;
+        gap: 36px;
+      }
+
+      .domain {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 28px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+      }
+
+      .domain[hidden] {
+        display: none !important;
+      }
+
+      .dname {
+        font-size: 1.05rem;
+      }
+
+      .dgrid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .pcard {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .pcard .who {
+        font-size: 0.8rem;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .pcard h4 {
+        font-size: 1.05rem;
+      }
+
+      .pcard p {
+        font-size: 0.92rem;
+      }
+
+      .pcard .stack {
+        margin-top: auto;
+        padding-top: 8px;
+      }
+
+      .dgrid > .pcard:only-child {
+        grid-column: 1 / -1;
+        max-width: 64rem;
+      }
+
+      .pcard.wp-stat {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 4px 24px;
+        align-items: center;
+        background: linear-gradient(135deg, var(--hero-2), var(--hero-1));
+        border-color: transparent;
+        color: #c7e6d3;
+      }
+
+      .pcard.wp-stat .who {
+        grid-column: 1 / -1;
+        color: #a9cdb6;
+      }
+
+      .pcard.wp-stat .big {
+        grid-row: span 2;
+        font-family: var(--font-display);
+        font-size: clamp(2.8rem, 6vw, 3.8rem);
+        line-height: 1;
+        font-weight: 800;
+        color: var(--lime);
+        letter-spacing: -0.03em;
+      }
+
+      .pcard.wp-stat h4 {
+        color: #ffffff;
+        font-size: 1.15rem;
+      }
+
+      .xp {
+        border-top: 1px solid var(--line);
+      }
+
+      .xp .row {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr) minmax(0, 1.4fr);
+        gap: 28px;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .xp .when {
+        font-family: var(--font-mono);
+        font-size: 0.84rem;
+        color: var(--muted);
+        padding-top: 3px;
+      }
+
+      .xp h3 {
+        font-size: 1.05rem;
+      }
+
+      .xp .co {
+        margin-top: 2px;
+        font-size: 0.9rem;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .xp p {
+        font-size: 0.94rem;
+      }
+
+      .cred {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+        margin-top: 56px;
+      }
+
+      .cred div {
+        min-width: 0;
+      }
+
+      .cred h3 {
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--line);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-family: var(--font-body);
+      }
+
+      .cred ul {
+        list-style: none;
+        margin: 12px 0 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .cred b {
+        display: block;
+        color: var(--ink);
+        font-weight: 600;
+        font-size: 0.94rem;
+      }
+
+      .cred span {
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .skills div {
+        padding: 20px 24px 20px 0;
+        border-bottom: 1px solid var(--line);
+        min-width: 0;
+      }
+
+      .skills h3 {
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+      }
+
+      .band {
+        color: var(--band-text);
+        background:
+          repeating-radial-gradient(circle at 90% 120%, transparent 0 40px, rgba(180, 236, 108, 0.07) 40px 41px),
+          linear-gradient(135deg, var(--hero-2), var(--band));
+      }
+
+      .band .label { color: var(--lime) !important; }
+
+      .band .wrap {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        gap: clamp(36px, 5vw, 96px);
+        padding-block: clamp(64px, 7vw, 112px);
+      }
+
+      .band h2 {
+        margin-top: 12px;
+        color: #ffffff;
+        font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .band p {
+        margin-top: 16px;
+        color: var(--band-muted);
+        max-width: 54ch;
+      }
+
+      .lines {
+        display: grid;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        align-content: start;
+      }
+
+      .line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .line div { min-width: 0; }
+
+      .line small {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--band-muted);
+      }
+
+      .line .v {
+        display: inline-block;
+        color: #ffffff;
+        font-weight: 600;
+        overflow-wrap: anywhere;
+      }
+
+      .line button {
+        flex: none;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: transparent;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 7px 14px;
+        font: 600 0.85rem var(--font-body);
+        cursor: pointer;
+      }
+
+      .line button:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      footer {
+        background: var(--hero-1);
+        color: var(--band-muted);
+        font-size: 0.84rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        padding-block: 20px;
+      }
+
+      /* ---------- Big screens ---------- */
+
+      /* Desktop: opening section plus metrics band fill the first screen */
+      @media (min-width: 1100px) and (min-height: 680px) {
+        .intro {
+          display: flex;
+          align-items: center;
+          min-height: min(calc(100vh - var(--header-h) - 8.5rem), 56rem);
+          min-height: min(calc(100svh - var(--header-h) - 8.5rem), 56rem);
+        }
+        .intro .wrap { padding-block: 64px; }
+      }
+
+      /* Laptops and 1440p monitors */
+      @media (min-width: 1440px) {
+        .case { grid-template-columns: 290px minmax(0, 1fr); }
+        .skills { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .sheet .item { grid-template-columns: 124px minmax(0, 1fr); }
+      }
+
+      /* Full HD and wider */
+      @media (min-width: 1680px) {
+        .case { grid-template-columns: 320px minmax(0, 1fr); }
+        .domain { grid-template-columns: 260px minmax(0, 1fr); }
+        .xp .row { grid-template-columns: 230px minmax(0, 1fr) minmax(0, 1.6fr); }
+
+      }
+
+      /* ---------- Tablets and phones ---------- */
+
+      @media (max-width: 900px) {
+        .intro .wrap,
+        .sec-head,
+        .band .wrap {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .intro .wrap {
+          padding-block: 48px;
+          gap: 36px;
+        }
+
+        .caps,
+        .more,
+        .cred,
+        .skills,
+        .aws-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .case {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .case aside {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .metrics .wrap {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .metric:nth-child(3) {
+          border-left: 0;
+          padding-left: 0;
+        }
+
+        .metric:nth-child(n + 3) {
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .xp .row {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 6px;
+        }
+
+        .domain {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 14px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .top nav a.link {
+          display: none;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .caps,
+        .more,
+        .cred,
+        .skills,
+        .dgrid,
+        .aws-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .flow {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .flow div {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+
+        .flow div:first-child {
+          border-top: 0;
+        }
+
+        .case .body,
+        .case aside {
+          padding: 22px;
+        }
+
+        .sheet .item {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 2px;
+        }
+
+        .pcard.wp-stat {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .pcard.wp-stat .big {
+          grid-row: auto;
+        }
+
+        .line {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <a class="mark" href="#top"><i>SP</i>Saurav Pokharel</a>
+        <nav aria-label="Main navigation">
+          <a class="link" href="#capabilities">Capabilities</a>
+          <a class="link" href="#aws">AWS</a>
+          <a class="link" href="#work">AgTech work</a>
+          <a class="link" href="#past">Past projects</a>
+          <a class="link" href="#experience">Experience</a>
+          <a class="btn primary" href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" id="top">
+        <div class="wrap">
+          <div>
+            <div class="label">Senior Full-Stack Developer · Team Lead</div>
+            <h1>Saurav Pokharel</h1>
+            <p class="role"><mark>Data, time-series and GIS</mark> platforms for Australian agriculture and other domains</p>
+            <p class="lede">
+              I design and deliver full-stack platforms on Node.js, Vue, React and AWS, and I lead the teams that
+              build them. Over 10+ years I've shipped products for Australian clients, from event-driven
+              microservices to sensor data pipelines and map-based analytics used by growers every season.
+            </p>
+            <div class="ctas">
+              <a class="btn primary" href="#work">View case studies</a>
+              <a class="btn" href="cv.html">View CV</a>
+              <a class="btn" href="https://www.linkedin.com/in/sauravpokharel" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="sheet">
+            <div class="sheet-head"><span class="dot" aria-hidden="true"></span>Open to senior and lead roles</div>
+            <dl>
+              <div class="item">
+                <dt>Work rights</dt>
+                <dd>Full work rights in Australia<small>No sponsorship needed · valid to 2030</small></dd>
+              </div>
+              <div class="item">
+                <dt>Visa</dt>
+                <dd>485 Graduate visa<small>Valid till 2030</small></dd>
+              </div>
+              <div class="item">
+                <dt>Location</dt>
+                <dd>Perth, WA<small>Open to Perth and Melbourne · on-site, hybrid or remote</small></dd>
+              </div>
+              <div class="item">
+                <dt>Current</dt>
+                <dd>Team Lead, AxisTech<small>AgTech software · since Jul 2025</small></dd>
+              </div>
+              <div class="item">
+                <dt>Core stack</dt>
+                <dd>Node.js · TypeScript · Vue · React · AWS</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <div class="metrics">
+        <div class="wrap">
+          <div class="metric"><b>10+</b><span>Years in software delivery</span></div>
+          <div class="metric"><b>5–10</b><span>Developers led per team</span></div>
+          <div class="metric"><b>6</b><span>AgTech platforms built at AxisTech</span></div>
+          <div class="metric"><b>5,000</b><span>Concurrent users load-tested</span></div>
+        </div>
+      </div>
+
+      <section class="sec" id="capabilities">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <div class="label">Capabilities</div>
+              <h2>What I bring to a team</h2>
+            </div>
+            <p>Hands-on engineering across the stack, with the leadership to plan, staff and ship the work.</p>
+          </div>
+
+          <div class="caps">
+            <div class="cap">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="6" rx="1.5"></rect>
+                <rect x="3" y="14" width="18" height="6" rx="1.5"></rect>
+                <path d="M7 7h.01M7 17h.01"></path>
+              </svg>
+              <h3>Platform engineering</h3>
+              <p>Full-stack products on Node.js, NestJS and GraphQL, with Vue and React front ends.</p>
+              <ul>
+                <li>Serverless and container architecture on AWS</li>
+                <li>Microservices with Apollo Federation, RabbitMQ, gRPC</li>
+                <li>CI/CD, code quality and monitoring</li>
+              </ul>
+            </div>
+
+            <div class="cap">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"></path>
+                <path d="M9 4v14M15 6v14"></path>
+              </svg>
+              <h3>Data and GIS</h3>
+              <p>Platforms that turn field hardware and spatial data into decisions.</p>
+              <ul>
+                <li>Time-series ingestion and ETL for sensor data</li>
+                <li>GeoJSON indexing, map layers and legends</li>
+                <li>Mapbox dashboards, PostGIS and Postgres</li>
+              </ul>
+            </div>
+
+            <div class="cap">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="9" cy="8" r="3"></circle>
+                <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path>
+                <path d="M16 4.5a3 3 0 0 1 0 6M21 20c0-2.6-1.6-4.8-4-5.6"></path>
+              </svg>
+              <h3>Team leadership</h3>
+              <p>Leading 5–10 developers from planning through release.</p>
+              <ul>
+                <li>Agile delivery and sprint planning</li>
+                <li>Hiring, onboarding and mentoring</li>
+                <li>Client and stakeholder alignment</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="aws" id="aws">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <div class="label">Cloud &amp; AWS</div>
+              <h2>AWS servers and services I run in production</h2>
+            </div>
+            <p>
+              Serverless APIs for AgTech platforms, container clusters for microservices, and the pipelines that
+              ship them. AWS Certified Developer – Associate in progress.
+            </p>
+          </div>
+
+          <div class="aws-grid">
+            <div class="aws-card">
+              <h3>Compute &amp; servers</h3>
+              <p>Lambda for serverless APIs and data adapters; ECS and Fargate clusters for microservices; EC2, Elastic Beanstalk and EKS for long-running services.</p>
+              <div class="stack"><span>EC2</span><span>Lambda</span><span>ECS</span><span>Fargate</span><span>EKS</span><span>Elastic Beanstalk</span></div>
+            </div>
+
+            <div class="aws-card">
+              <h3>APIs &amp; networking</h3>
+              <p>Public and internal APIs behind API Gateway, with domains on Route 53 and front ends served through CloudFront.</p>
+              <div class="stack"><span>API Gateway</span><span>Route 53</span><span>CloudFront</span></div>
+            </div>
+
+            <div class="aws-card">
+              <h3>Data &amp; storage</h3>
+              <p>PostgreSQL and MySQL on RDS, DynamoDB for serverless workloads, and S3 for files, layers and static sites.</p>
+              <div class="stack"><span>RDS</span><span>DynamoDB</span><span>S3</span></div>
+            </div>
+
+            <div class="aws-card">
+              <h3>Messaging &amp; email</h3>
+              <p>Notifications and alerts through SNS, and transactional email such as invites and password resets through SES.</p>
+              <div class="stack"><span>SNS</span><span>SES</span></div>
+            </div>
+
+            <div class="aws-card">
+              <h3>Infrastructure &amp; delivery</h3>
+              <p>Infrastructure as code and CI/CD from commit to cluster, with load testing and cost tuning for production traffic.</p>
+              <div class="stack"><span>CloudFormation</span><span>CodePipeline</span><span>Serverless Framework</span><span>Docker</span><span>Jenkins</span><span>CircleCI</span></div>
+            </div>
+
+            <div class="aws-card highlight">
+              <h3>In practice</h3>
+              <ul>
+                <li>Serverless back ends on Lambda for 6 AgTech platforms</li>
+                <li>NestJS microservice clusters on ECS Fargate</li>
+                <li>Clusters and Elasticsearch nodes sized for 5,000 concurrent users</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec alt" id="work">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <div class="label">Case studies</div>
+              <h2>Selected work</h2>
+            </div>
+            <p>
+              Four connected AgTech products I lead at AxisTech, which share one platform, one time-series store and one map stack. Plus a real-time video dating platform I led at EB Pearls.
+            </p>
+          </div>
+
+          <div class="cases">
+            <article class="case">
+              <aside>
+                <span class="num">01 · AxisTech</span>
+                <h3>Vineyard data management platform</h3>
+                <dl>
+                  <div><dt>Role</dt><dd>Full-stack lead</dd></div>
+                  <div><dt>Team</dt><dd>3 developers, 1 designer, 1 QA</dd></div>
+                  <div><dt>Timeline</dt><dd>6-month build, 2025 – present</dd></div>
+                </dl>
+              </aside>
+              <div class="body">
+                <div>
+                  <h4>Challenge</h4>
+                  <p>Give Australian vineyard growers one place to see weather, soil and crop-health data. The project is backed by Australian agricultural agencies, with support from Wine Australia.</p>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul>
+                    <li>A grower Data Hub and an admin portal on a shared GraphQL API running on AWS Lambda</li>
+                    <li>Live, historical and 7-day weather, comparing Jane's Weather, BOM and SILO</li>
+                    <li>In-season bud, leaf, petiole and tissue monitoring, plus a disease-risk view</li>
+                    <li>Season performance by block on a map, and rule-based alerts</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Integrations</h4>
+                  <p>BOM, SILO and Jane's Weather forecasts, METOS stations, Athena IR Tech, BioScout and lab testing reports.</p>
+                </div>
+                <div>
+                  <h4>Outcome</h4>
+                  <p>The platform is live, with grower onboarding, role-based access and alerts in production.</p>
+                </div>
+                <div class="stack"><span>Vue 3</span><span>GraphQL</span><span>AWS Lambda</span><span>TypeORM</span><span>PostgreSQL</span><span>Mapbox</span></div>
+              </div>
+            </article>
+
+            <article class="case">
+              <aside>
+                <span class="num">02 · AxisTech</span>
+                <h3>Time-series data platform</h3>
+                <dl>
+                  <div><dt>Role</dt><dd>Architect and lead developer</dd></div>
+                  <div><dt>Used by</dt><dd>Vineyard and risk-mapping platforms</dd></div>
+                  <div><dt>Timeline</dt><dd>2025 – present</dd></div>
+                </dl>
+              </aside>
+              <div class="body">
+                <div>
+                  <h4>Challenge</h4>
+                  <p>Store and serve readings from many kinds of field hardware and data providers, per vineyard, without overloading the main platform database.</p>
+                </div>
+                <div class="flow" aria-label="Data flow">
+                  <div><b>Sources</b><span>Weather stations, soil and plant sensors, cameras, BOM</span></div>
+                  <div><b>ETL</b><span>Standardise, enrich, check accuracy</span></div>
+                  <div><b>Time-series DB</b><span>One schema per vineyard, created at runtime</span></div>
+                  <div><b>Applications</b><span>Dashboards, alerts, map layers</span></div>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul>
+                    <li>A serverless adapter that loads data into a TimescaleDB-style Postgres kept separate from the main database</li>
+                    <li>A dedicated database role that owns the per-vineyard schemas and tables</li>
+                    <li>REST endpoints serving device data per vineyard and per unit</li>
+                  </ul>
+                </div>
+                <div class="stack"><span>Serverless Framework</span><span>Node.js</span><span>TimescaleDB</span><span>PostgreSQL</span><span>ETL</span></div>
+              </div>
+            </article>
+
+            <article class="case">
+              <aside>
+                <span class="num">03 · AxisTech</span>
+                <h3>Field scoring &amp; scenario planning</h3>
+                <dl>
+                  <div><dt>Role</dt><dd>Full-stack lead</dd></div>
+                  <div><dt>Product</dt><dd>Admin portal, grower app, API</dd></div>
+                  <div><dt>Timeline</dt><dd>2025 – present</dd></div>
+                </dl>
+              </aside>
+              <div class="body">
+                <div>
+                  <h4>Challenge</h4>
+                  <p>Score fields and let growers plan scenarios on spatial layers that render the same way for every field and season.</p>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul>
+                    <li>GeoJSON layers indexed into grid, cell and value rows, with legends generated from the data</li>
+                    <li>Scenario planning that lets growers test practices and factors against season data, then apply them</li>
+                    <li>QR login for the grower app, and profiles that gate features by subscription tier</li>
+                    <li>Shared reads of project, field, crop and season data from the main platform database</li>
+                  </ul>
+                </div>
+                <div class="stack"><span>Vue 3</span><span>Vuetify</span><span>GeoJSON</span><span>AWS Lambda</span><span>PostgreSQL</span></div>
+              </div>
+            </article>
+
+            <article class="case">
+              <aside>
+                <span class="num">04 · AxisTech</span>
+                <h3>Regional risk-mapping network</h3>
+                <dl>
+                  <div><dt>Role</dt><dd>Full-stack lead</dd></div>
+                  <div><dt>Product</dt><dd>Shared regional risk map</dd></div>
+                  <div><dt>Timeline</dt><dd>2025 – present</dd></div>
+                </dl>
+              </aside>
+              <div class="body">
+                <div>
+                  <h4>Challenge</h4>
+                  <p>Let groups of growers share devices and see the same environmental risk picture across a region.</p>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul>
+                    <li>Mapbox overlays for weather, water and soil, driven by live device data</li>
+                    <li>Colour-coded spray-risk and bushfire-risk layers, including catastrophic conditions</li>
+                    <li>Invitation, role and device-sharing flows for each network</li>
+                  </ul>
+                </div>
+                <div class="stack"><span>Vue 3</span><span>Mapbox</span><span>Express</span><span>Time-series</span></div>
+              </div>
+            </article>
+
+            <article class="case">
+              <aside>
+                <span class="num">05 · EB Pearls</span>
+                <h3>Video dating platform</h3>
+                <dl>
+                  <div><dt>Role</dt><dd>Back-end development lead</dd></div>
+                  <div><dt>Client</dt><dd>Sydney-based startup</dd></div>
+                  <div><dt>Delivered</dt><dd>Feb 2024 · Android and iOS</dd></div>
+                </dl>
+              </aside>
+              <div class="body">
+                <div>
+                  <h4>Challenge</h4>
+                  <p>Match online users in real time and pair them for short video calls, at scale and at a sensible cloud cost.</p>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul>
+                    <li>A virtual lobby that pairs users for two-minute video calls, where they can like, rate and match</li>
+                    <li>The core matching algorithm, which finds online users across about 30 preferences</li>
+                    <li>NestJS microservices behind an Apollo Federation gateway, using RabbitMQ and TCP between services</li>
+                    <li>Live user activity and availability over Socket.IO, phone verification with Twilio, and email with SES</li>
+                    <li>In-app subscriptions that limit free users to three lobby sessions a day</li>
+                    <li>CI/CD to AWS Fargate on ECS, managed directly with the client under a project manager</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Outcome</h4>
+                  <p>Shipped to Android and iOS. Load tests were planned for 5,000 concurrent users, with tuned AWS cluster and Elasticsearch sizing to keep costs down.</p>
+                </div>
+                <div class="stack"><span>NestJS</span><span>Apollo Federation</span><span>RabbitMQ</span><span>MongoDB</span><span>Elasticsearch</span><span>Socket.IO</span><span>ECS Fargate</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <div class="label">AgTech · recent</div>
+              <h2>More agriculture platforms</h2>
+            </div>
+            <p>Compliance, supply chain and livestock products built for farms and agribusiness in Australia and overseas.</p>
+          </div>
+
+          <div class="more">
+            <article>
+              <span class="who">AxisTech · 2025 – present</span>
+              <h3>Farm-safety compliance platform</h3>
+              <p>Compliance platform for farms, with forms, registers and role-based organisations, across four apps on one serverless API.</p>
+              <div class="stack"><span>Vue 3</span><span>Lambda</span><span>Postgres</span></div>
+            </article>
+
+            <article>
+              <span class="who">AxisTech · pilot</span>
+              <h3>Smallholder supply-chain platform</h3>
+              <p>Supply-chain platform for a Cambodian rice operation with about 2,000 smallholder growers across about 10,000 ha. It replaces paper ledgers and spreadsheet finance.</p>
+              <div class="stack"><span>Next.js PWA</span><span>Prisma</span><span>PostGIS</span></div>
+            </article>
+
+            <article>
+              <span class="who">Freelance · Canadian AgTech client · 2025</span>
+              <h3>Livestock management platform</h3>
+              <p>Six microservices for farm registration and geofencing, genetics/EPD, reproduction, goals and feed. Delivered in three months for a major US dairy event and load-tested for 5,000 concurrent users.</p>
+              <div class="stack"><span>NestJS</span><span>Apollo Federation</span><span>RabbitMQ</span><span>gRPC</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec alt" id="past">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <div class="label">Past projects</div>
+              <h2>Work across industries</h2>
+            </div>
+            <p>Before AgTech, I led back-end and full-stack delivery for Australian and international clients at EB Pearls and earlier agencies.</p>
+          </div>
+
+          <div class="filters" role="group" aria-label="Filter projects by domain">
+            <button type="button" class="f on" data-d="all" aria-pressed="true">All</button>
+            <button type="button" class="f" data-d="media" aria-pressed="false">Media &amp; publishing</button>
+            <button type="button" class="f" data-d="wordpress" aria-pressed="false">WordPress publishing</button>
+            <button type="button" class="f" data-d="market" aria-pressed="false">Marketplaces &amp; commerce</button>
+            <button type="button" class="f" data-d="social" aria-pressed="false">Social &amp; consumer</button>
+            <button type="button" class="f" data-d="compliance" aria-pressed="false">Compliance &amp; membership</button>
+            <button type="button" class="f" data-d="data" aria-pressed="false">Data scraping &amp; automation</button>
+            <button type="button" class="f" data-d="saas" aria-pressed="false">Streaming SaaS</button>
+          </div>
+
+          <div class="domains">
+            <div class="domain" data-d="media">
+              <h3 class="dname">Media &amp; publishing</h3>
+              <div class="dgrid">
+                <article class="pcard">
+                  <span class="who">EB Pearls · 2023 · Back-end lead</span>
+                  <h4>Australian media house apps</h4>
+                  <p>White-label mobile apps for Australia's largest independent publisher, which reaches 4.1 million Australians online each month.</p>
+                  <div class="stack"><span>NestJS</span><span>GraphQL</span><span>MongoDB</span><span>Elasticsearch</span><span>Fargate</span></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="domain" data-d="wordpress">
+              <h3 class="dname">WordPress publishing</h3>
+              <div class="dgrid">
+                <article class="pcard wp-stat">
+                  <span class="who">2014 – 2019 · Sydney and Kathmandu</span>
+                  <div class="big">50+</div>
+                  <h4>Custom WordPress applications built</h4>
+                  <p>Custom themes, plugins and dynamic content sites for Australian and international clients.</p>
+                </article>
+
+                <article class="pcard">
+                  <span class="who">Nirmal Web Studio / WP Creative · Sydney · 2016 – 2019</span>
+                  <h4>Agency WordPress delivery</h4>
+                  <p>Tech lead on custom WordPress builds for agency clients.</p>
+                  <div class="stack"><span>WordPress</span><span>PHP</span><span>Custom plugins</span><span>Laravel</span><span>Vue</span><span>MySQL</span></div>
+                </article>
+
+                <article class="pcard">
+                  <span class="who">ICN (Improvement Company Nepal) · 2014 – 2016</span>
+                  <h4>Dynamic WordPress sites</h4>
+                  <p>Custom WordPress sites and themes, alongside CodeIgniter and Laravel web applications.</p>
+                  <div class="stack"><span>WordPress</span><span>PHP</span><span>CodeIgniter</span><span>Laravel</span><span>MySQL</span></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="domain" data-d="market">
+              <h3 class="dname">Marketplaces &amp; commerce</h3>
+              <div class="dgrid">
+                <article class="pcard">
+                  <span class="who">EB Pearls · 2021 · Development lead</span>
+                  <h4>Creative-industry talent platform</h4>
+                  <p>A vetted marketplace where film and TV production houses find and book freelancers.</p>
+                  <div class="stack"><span>Node.js</span><span>React</span><span>MongoDB</span><span>PubNub</span><span>Fargate</span></div>
+                </article>
+
+                <article class="pcard">
+                  <span class="who">EB Pearls · Full-stack</span>
+                  <h4>Wine auction platform</h4>
+                  <p>Online wine auctions with a Supabase back end, a Next.js storefront and a custom React CMS for the auction team.</p>
+                  <div class="stack"><span>Supabase</span><span>Next.js</span><span>PostgreSQL</span></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="domain" data-d="social">
+              <h3 class="dname">Social &amp; consumer</h3>
+              <div class="dgrid">
+                <article class="pcard">
+                  <span class="who">EB Pearls · Full-stack</span>
+                  <h4>Gift and wishlist app</h4>
+                  <p>Event and wishlist management. Users invite friends to a birthday or event, and friends can see which gifts are already taken.</p>
+                  <div class="stack"><span>Express</span><span>Vue</span><span>Vuex</span><span>MySQL</span></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="domain" data-d="compliance">
+              <h3 class="dname">Compliance &amp; membership</h3>
+              <div class="dgrid">
+                <article class="pcard">
+                  <span class="who">EB Pearls · 2023 · Development lead</span>
+                  <h4>Australian compliance institute</h4>
+                  <p>Membership, course, resource and event bookings for the professional body for compliance and risk managers. Includes NextAuth refresh tokens and cron services.</p>
+                  <div class="stack"><span>NestJS</span><span>Next.js</span><span>MongoDB</span><span>ECS</span></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="domain" data-d="data">
+              <h3 class="dname">Data scraping &amp; automation</h3>
+              <div class="dgrid">
+                <article class="pcard">
+                  <span class="who">Grepsr · 2016 · Software Developer</span>
+                  <h4>Data scraping and ingestion automation</h4>
+                  <p>Built data-scraping plugins and worked on a Python-based automation platform that extracts web data and feeds it into client ingestion pipelines.</p>
+                  <div class="stack"><span>Python</span><span>Web scraping</span><span>Automation</span><span>Data ingestion</span></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="domain" data-d="saas">
+              <h3 class="dname">Streaming SaaS</h3>
+              <div class="dgrid">
+                <article class="pcard">
+                  <span class="who">Agency project · Israeli client</span>
+                  <h4>Cloud OTT platform</h4>
+                  <p>A multi-tenant SaaS platform for video streaming (OTT), built on a PHP back end with the Kaltura framework and an AngularJS front end.</p>
+                  <div class="stack"><span>PHP</span><span>Kaltura</span><span>AngularJS</span></div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="experience">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <div class="label">Experience</div>
+              <h2>Career history</h2>
+            </div>
+            <p>Ten years across agencies and product companies, with the last seven in team leadership.</p>
+          </div>
+
+          <div class="xp">
+            <div class="row">
+              <span class="when">Jul 2025 – Present</span>
+              <div>
+                <h3>Full Stack Developer (Team Lead)</h3>
+                <div class="co">AxisTech Pty Ltd · Perth, WA</div>
+              </div>
+              <p>Lead 5–10 developers building AgTech products for clients across Australia: vineyard management, farm-safety compliance, time-series pipelines and GIS layers.</p>
+            </div>
+
+            <div class="row">
+              <span class="when">Feb 2024 – May 2025</span>
+              <div>
+                <h3>Associate Engineering Manager</h3>
+                <div class="co">EB Pearls · Sydney, NSW · Kathmandu office</div>
+              </div>
+              <p>Owned MERN-stack architecture and code standards, ran Agile delivery, and managed and mentored 5–10 developers.</p>
+            </div>
+
+            <div class="row">
+              <span class="when">Feb 2019 – Feb 2024</span>
+              <div>
+                <h3>Development Team Lead</h3>
+                <div class="co">EB Pearls · Sydney, NSW · Kathmandu office</div>
+              </div>
+              <p>Promoted from Senior Developer. Moved the back end to Node.js and NestJS and designed microservices on AWS Fargate. Leader of Tomorrow award, 2023.</p>
+            </div>
+
+            <div class="row">
+              <span class="when">Aug 2016 – Feb 2019</span>
+              <div>
+                <h3>Software Engineer</h3>
+                <div class="co">Nirmal Web Studio / WP Creative · Sydney</div>
+              </div>
+              <p>Tech lead on Laravel, Node.js and WordPress back ends with Vue and React front ends. Part of 50+ custom WordPress applications built from 2014 to 2019.</p>
+            </div>
+
+            <div class="row">
+              <span class="when">Feb 2016 – Aug 2016</span>
+              <div>
+                <h3>Software Developer</h3>
+                <div class="co">Grepsr · Kathmandu, Nepal</div>
+              </div>
+              <p>Built data-scraping plugins and worked on a Python-based automation platform for data ingestion.</p>
+            </div>
+
+            <div class="row">
+              <span class="when">Jun 2014 – Feb 2016</span>
+              <div>
+                <h3>Software Developer</h3>
+                <div class="co">ICN (Improvement Company Nepal)</div>
+              </div>
+              <p>Web applications in CodeIgniter and Laravel, and dynamic websites in WordPress.</p>
+            </div>
+          </div>
+
+          <div class="cred">
+            <div>
+              <h3>Recognition</h3>
+              <ul>
+                <li><b>The Leader of Tomorrow, 2023</b><span>EB Pearls, with promotion to Associate Engineering Manager</span></li>
+                <li><b>Punctual Employee, 2019</b><span>EB Pearls</span></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3>Certifications</h3>
+              <ul>
+                <li><b>TripleByte Certified Back-end Developer</b><span>Advanced</span></li>
+                <li><b>TripleByte Certified Front-end Developer</b><span>Professional</span></li>
+                <li><b>AWS Certified Developer – Associate</b><span>In progress</span></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3>Education</h3>
+              <ul>
+                <li><b>Bachelor of Engineering</b><span>Electronics &amp; Communication, Kathmandu Engineering College</span></li>
+                <li><b>Professional courses</b><span>Serverless with AWS (2022), Microservices with Node.js (2021)</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec alt">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <div class="label">Technical skills</div>
+              <h2>Tools and technologies</h2>
+            </div>
+          </div>
+
+          <div class="skills">
+            <div>
+              <h3>Back end</h3>
+              <div class="stack">
+                <span>Node.js</span><span>TypeScript</span><span>NestJS</span><span>Express</span><span>GraphQL</span><span>Laravel</span><span>WordPress</span><span>PHP</span><span>FastAPI</span>
+              </div>
+            </div>
+
+            <div>
+              <h3>Front end</h3>
+              <div class="stack">
+                <span>Vue 3</span><span>Vuetify</span><span>React</span><span>Next.js</span><span>Redux</span>
+              </div>
+            </div>
+
+            <div>
+              <h3>Data and GIS</h3>
+              <div class="stack">
+                <span>PostgreSQL</span><span>TimescaleDB</span><span>PostGIS</span><span>GeoJSON</span><span>Mapbox</span><span>MongoDB</span><span>Elasticsearch</span>
+              </div>
+            </div>
+
+            <div>
+              <h3>AWS</h3>
+              <div class="stack">
+                <span>EC2</span><span>Lambda</span><span>ECS / Fargate</span><span>EKS</span><span>Elastic Beanstalk</span><span>API Gateway</span><span>Route 53</span><span>CloudFront</span><span>RDS</span><span>DynamoDB</span><span>S3</span><span>SNS</span><span>SES</span><span>CloudFormation</span><span>CodePipeline</span>
+              </div>
+            </div>
+
+            <div>
+              <h3>Data and automation</h3>
+              <div class="stack">
+                <span>Python</span><span>Web scraping</span><span>ETL</span><span>Cron services</span><span>Data ingestion</span>
+              </div>
+            </div>
+
+            <div>
+              <h3>DevOps</h3>
+              <div class="stack">
+                <span>Docker</span><span>Serverless Framework</span><span>Jenkins</span><span>CircleCI</span><span>Prometheus</span><span>Grafana</span>
+              </div>
+            </div>
+
+            <div>
+              <h3>Architecture</h3>
+              <div class="stack">
+                <span>Apollo Federation</span><span>RabbitMQ</span><span>Kafka</span><span>gRPC</span><span>Saga / CQRS</span>
+              </div>
+            </div>
+
+            <div>
+              <h3>AI and delivery</h3>
+              <div class="stack">
+                <span>Claude API</span><span>ChatGPT API</span><span>LangChain</span><span>Docker</span><span>SonarQube</span><span>CircleCI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="band" id="contact">
+      <div class="wrap">
+        <div>
+          <div class="label">Contact</div>
+          <h2>Let's talk about your next platform.</h2>
+          <p>I'm open to senior full-stack and development lead roles. I have full work rights in Australia and need no sponsorship.</p>
+        </div>
+        <div class="lines">
+          <div class="line">
+            <div><small>Email</small><span class="v" id="email">saurav65069@gmail.com</span></div>
+            <button type="button" id="copy-email">Copy</button>
+          </div>
+          <div class="line">
+            <div><small>LinkedIn</small><a class="v" href="https://www.linkedin.com/in/sauravpokharel" target="_blank" rel="noopener noreferrer">linkedin.com/in/sauravpokharel</a></div>
+          </div>
+          <div class="line">
+            <div><small>Location</small><span class="v">Perth, WA · open to Melbourne</span></div>
+          </div>
+          <div class="line">
+            <div><small>Work rights</small><span class="v">Full work rights · valid to 2030</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap"><span>© 2026 Saurav Pokharel</span><span>Senior Full-Stack Developer · Perth, Australia</span></div>
+    </footer>
+
+    <script>
+      (function () {
+        var btn = document.getElementById("copy-email");
+        var el = document.getElementById("email");
+        if (btn && el) {
+          btn.addEventListener("click", function () {
+            function sel() {
+              var r = document.createRange();
+              r.selectNodeContents(el);
+              var s = getSelection();
+              s.removeAllRanges();
+              s.addRange(r);
+              btn.textContent = "Selected";
+            }
+            try {
+              navigator.clipboard.writeText(el.textContent).then(function () { btn.textContent = "Copied"; }, sel);
+            } catch (e) {
+              sel();
+            }
+            setTimeout(function () { btn.textContent = "Copy"; }, 2000);
+          });
+        }
+
+        var filters = document.querySelectorAll(".f");
+        var domains = document.querySelectorAll(".domain");
+        filters.forEach(function (b) {
+          b.addEventListener("click", function () {
+            var d = b.getAttribute("data-d");
+            filters.forEach(function (x) {
+              var on = x === b;
+              x.classList.toggle("on", on);
+              x.setAttribute("aria-pressed", on ? "true" : "false");
+            });
+            domains.forEach(function (dom) {
+              dom.hidden = d !== "all" && dom.getAttribute("data-d") !== d;
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
