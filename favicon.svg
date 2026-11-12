@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Saurav Pokharel monogram">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#14834b"/>
+      <stop offset="100%" stop-color="#06301d"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <path d="M18 44V18h6l8 14 8-14h6v26h-6V29.5l-8 14h-2l-8-14V44h-6z" fill="#b4ec6c"/>
+</svg>

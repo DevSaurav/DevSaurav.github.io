@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Saurav Pokharel profile preview">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0d5c36"/>
+      <stop offset="100%" stop-color="#06301d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1020" cy="120" r="180" fill="#14834b" opacity="0.22"/>
+  <circle cx="180" cy="610" r="220" fill="#b4ec6c" opacity="0.10"/>
+  <rect x="90" y="90" width="180" height="180" rx="38" fill="#0f8a4a"/>
+  <path d="M124 228V122h28l42 80 42-80h28v106h-26V170l-44 80h-10l-44-80v58h-26z" fill="#b4ec6c"/>
+  <text x="90" y="410" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="700">Saurav Pokharel</text>
+  <text x="90" y="470" fill="#d7efe0" font-family="Arial, Helvetica, sans-serif" font-size="30">Senior Full-Stack Developer · Team Lead</text>
+  <text x="90" y="518" fill="#c7e6d3" font-family="Arial, Helvetica, sans-serif" font-size="24">Data, time-series and GIS platforms for Australian agriculture</text>
+</svg>

@@ -1,0 +1,12 @@
+{
+  "name": "Saurav Pokharel",
+  "short_name": "Saurav",
+  "description": "Senior full-stack developer and team lead building data, time-series and GIS platforms.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7fbf8",
+  "theme_color": "#0d5c36",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

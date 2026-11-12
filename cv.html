@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CV | Saurav Pokharel</title>
+    <meta name="description" content="Curriculum vitae for Saurav Pokharel, senior full-stack developer and team lead.">
+    <style>
+      :root {
+        --ink: #12261a;
+        --muted: #496557;
+        --line: #dfece2;
+        --bg: #f6faf7;
+        --accent: #0d5c36;
+        --accent-soft: #eaf7ef;
+      }
+      * { box-sizing: border-box }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.6;
+      }
+      .page {
+        max-width: 980px;
+        margin: 32px auto;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 40px 42px;
+      }
+      .topbar {
+        display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
+        border-bottom: 2px solid var(--line); padding-bottom: 18px; margin-bottom: 28px;
+      }
+      h1 { margin: 0; font-size: clamp(2rem, 3vw, 2.8rem); }
+      .meta { color: var(--muted); font-size: .96rem; }
+      .two-col { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 32px; }
+      .sidebar { padding-right: 8px; }
+      .sidebar h2, .content h2 {
+        margin: 0 0 12px; font-size: .9rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+      .panel { margin-bottom: 24px; }
+      .list { margin: 0; padding-left: 18px; }
+      .list li { margin-bottom: 6px; }
+      .location { font-weight: 600; }
+      .content section { margin-bottom: 26px; }
+      .job { margin-bottom: 14px; }
+      .job-header { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 5px; }
+      .job h3 { margin: 0; font-size: 1.05rem; }
+      .job .when { color: var(--muted); font-weight: 600; white-space: nowrap; }
+      .muted { color: var(--muted); }
+      @media (max-width: 760px) {
+        .page { padding: 24px 20px; margin: 16px; }
+        .topbar, .two-col, .job-header { display: block; }
+        .job .when { display: block; margin-top: 4px; }
+      }
+      @media print {
+        body { background: #fff; }
+        .page { margin: 0; border: none; border-radius: 0; max-width: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="topbar">
+        <div>
+          <h1>Saurav Pokharel</h1>
+          <div class="meta">Senior Full-Stack Developer · Team Lead</div>
+        </div>
+        <div class="meta">
+          <div>Perth, WA</div>
+          <div>saurav65069@gmail.com</div>
+          <div>linkedin.com/in/sauravpokharel</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <aside class="sidebar">
+          <div class="panel">
+            <h2>Profile</h2>
+            <p>Full-stack platform engineer and team lead with 10+ years shipping data, GIS and time-series products for agriculture and other domains.</p>
+          </div>
+          <div class="panel">
+            <h2>Core stack</h2>
+            <ul class="list">
+              <li>Node.js / TypeScript</li>
+              <li>Vue / React / Next.js</li>
+              <li>NestJS / GraphQL / REST</li>
+              <li>AWS Lambda / ECS / Fargate</li>
+              <li>PostgreSQL / TimescaleDB / PostGIS</li>
+              <li>Mapbox / GeoJSON / GIS</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>Certifications</h2>
+            <ul class="list">
+              <li>TripleByte Certified Back-end Developer (Advanced)</li>
+              <li>TripleByte Certified Front-end Developer (Professional)</li>
+              <li>AWS Certified Developer – Associate (in progress)</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>Work rights</h2>
+            <p class="location">Full work rights in Australia</p>
+            <p class="muted">No sponsorship required</p>
+          </div>
+        </aside>
+
+        <main class="content">
+          <section>
+            <h2>Experience</h2>
+            <div class="job">
+              <div class="job-header">
+                <h3>Full Stack Developer (Team Lead)</h3>
+                <div class="when">Jul 2025 – Present</div>
+              </div>
+              <div class="muted">AxisTech Pty Ltd · Perth, WA</div>
+              <p>Lead 5–10 developers building AgTech products for clients across Australia, including vineyard management, farm-safety compliance, time-series pipelines and GIS layers.</p>
+            </div>
+            <div class="job">
+              <div class="job-header">
+                <h3>Associate Engineering Manager</h3>
+                <div class="when">Feb 2024 – May 2025</div>
+              </div>
+              <div class="muted">EB Pearls · Sydney, NSW · Kathmandu office</div>
+              <p>Owned MERN-stack architecture and code standards, ran Agile delivery, and managed and mentored 5–10 developers.</p>
+            </div>
+            <div class="job">
+              <div class="job-header">
+                <h3>Development Team Lead</h3>
+                <div class="when">Feb 2019 – Feb 2024</div>
+              </div>
+              <div class="muted">EB Pearls · Sydney, NSW · Kathmandu office</div>
+              <p>Promoted from Senior Developer. Moved the back end to Node.js and NestJS and designed microservices on AWS Fargate.</p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Selected projects</h2>
+            <ul class="list">
+              <li>Vineyard data management platform with weather, crop-health, alerts and role-based grower access.</li>
+              <li>Time-series data platform for per-vineyard device ingestion, ETL and dashboarding.</li>
+              <li>Field scoring and scenario planning with GeoJSON layers and shareable maps.</li>
+              <li>Regional risk-mapping network for growers to collaborate on spray and bushfire risk overlays.</li>
+              <li>Video dating platform with matching, lobby pairing, WebSocket activity and AWS deployment.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Education</h2>
+            <p><strong>Bachelor of Engineering</strong> – Electronics &amp; Communication, Kathmandu Engineering College</p>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

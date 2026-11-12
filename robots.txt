@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://devsaurav.github.io/sitemap.xml
