@@ -1,158 +1,100 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>CV | Saurav Pokharel</title>
-    <meta name="description" content="Curriculum vitae for Saurav Pokharel, senior full-stack developer and team lead.">
-    <style>
-      :root {
-        --ink: #12261a;
-        --muted: #496557;
-        --line: #dfece2;
-        --bg: #f6faf7;
-        --accent: #0d5c36;
-        --accent-soft: #eaf7ef;
-      }
-      * { box-sizing: border-box }
-      body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: var(--bg);
-        color: var(--ink);
-        line-height: 1.6;
-      }
-      .page {
-        max-width: 980px;
-        margin: 32px auto;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 40px 42px;
-      }
-      .topbar {
-        display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
-        border-bottom: 2px solid var(--line); padding-bottom: 18px; margin-bottom: 28px;
-      }
-      h1 { margin: 0; font-size: clamp(2rem, 3vw, 2.8rem); }
-      .meta { color: var(--muted); font-size: .96rem; }
-      .two-col { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 32px; }
-      .sidebar { padding-right: 8px; }
-      .sidebar h2, .content h2 {
-        margin: 0 0 12px; font-size: .9rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
-      .panel { margin-bottom: 24px; }
-      .list { margin: 0; padding-left: 18px; }
-      .list li { margin-bottom: 6px; }
-      .location { font-weight: 600; }
-      .content section { margin-bottom: 26px; }
-      .job { margin-bottom: 14px; }
-      .job-header { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 5px; }
-      .job h3 { margin: 0; font-size: 1.05rem; }
-      .job .when { color: var(--muted); font-weight: 600; white-space: nowrap; }
-      .muted { color: var(--muted); }
-      @media (max-width: 760px) {
-        .page { padding: 24px 20px; margin: 16px; }
-        .topbar, .two-col, .job-header { display: block; }
-        .job .when { display: block; margin-top: 4px; }
-      }
-      @media print {
-        body { background: #fff; }
-        .page { margin: 0; border: none; border-radius: 0; max-width: none; }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page">
-      <div class="topbar">
-        <div>
-          <h1>Saurav Pokharel</h1>
-          <div class="meta">Senior Full-Stack Developer · Team Lead</div>
-        </div>
-        <div class="meta">
-          <div>Perth, WA</div>
-          <div>saurav65069@gmail.com</div>
-          <div>linkedin.com/in/sauravpokharel</div>
-        </div>
-      </div>
+<!doctype html><html lang="en-AU"><head><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CV of Saurav Pokharel, senior full-stack developer and team lead.">
+<meta charset="utf-8"><title>Saurav Pokharel — Senior Full-Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0 }
+* { box-sizing: border-box; margin: 0; padding: 0 }
+html, body { background: #fff; }
+body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; color: #1f2a24; font-size: 9.4pt; line-height: 1.45;
+       -webkit-print-color-adjust: exact; print-color-adjust: exact }
+.page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always }
+.page:last-child { page-break-after: auto }
+.page::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3.2mm; background: #1f5a3e }
+header { background: linear-gradient(120deg, #1d5a3d 0%, #2b7350 55%, #1f5a3e 100%); color: #fff; padding: 10mm 14mm 8mm }
+header h1 { font-size: 25pt; font-weight: 800; letter-spacing: -.5px; line-height: 1.1 }
+header .title { color: #b9e5c8; font-weight: 600; font-size: 11pt; margin-top: 2mm }
+.contact { display: flex; flex-wrap: wrap; gap: 1.6mm 6mm; margin-top: 4mm; font-size: 8.4pt; color: #e3f3e8 }
+.contact span { display: inline-flex; align-items: center; gap: 1.4mm }
+.contact svg { width: 3.3mm; height: 3.3mm; fill: none; stroke: #b9e5c8; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round }
+.contact .wr { color: #fff; font-weight: 600 }
+.cols { display: grid; grid-template-columns: 1fr 63mm; gap: 9mm; padding: 7mm 14mm 0 }
+.page2 .cols { padding-top: 9mm }
+h2 { font-size: 7.6pt; font-weight: 700; letter-spacing: 1.6px; color: #2b7350; text-transform: uppercase;
+     display: flex; align-items: center; gap: 3mm; margin: 0 0 3mm }
+h2::after { content: ""; flex: 1; height: 1px; background: #dfe7e2 }
+section { margin-bottom: 5.5mm }
+p.profile { font-size: 9.6pt; color: #2c3a32 }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin-top: 4mm }
+.card { background: #e6f2ea; border-radius: 2mm; padding: 3mm 3.2mm; font-size: 8.1pt; color: #3a4a40; line-height: 1.38 }
+.card b { display: block; color: #1f5a3e; font-size: 8.9pt; margin-bottom: 1mm; line-height: 1.25 }
+.job { margin-bottom: 4.2mm }
+.job .top { display: flex; justify-content: space-between; align-items: baseline }
+.job h3 { font-size: 10.2pt; font-weight: 700 }
+.job .date { font-size: 8.3pt; color: #5d6b63; white-space: nowrap }
+.job .co { color: #2b7350; font-weight: 600; font-size: 8.9pt }
+.job .co span { color: #6b7a71; font-weight: 400 }
+.job .desc { font-size: 8.2pt; color: #6b7a71; margin: .6mm 0 1.4mm }
+ul.b { list-style: none }
+ul.b li { position: relative; padding-left: 4.2mm; margin-bottom: 1.25mm; font-size: 9pt }
+ul.b li::before { content: ""; position: absolute; left: .6mm; top: 2.1mm; width: 1.5mm; height: 1.5mm; border-radius: 50%; background: #2f8a5a }
+.chips { display: flex; flex-wrap: wrap; gap: 1.3mm; margin-top: 1.6mm }
+.chip { border: 1px solid #dfe5e1; border-radius: 1mm; padding: .5mm 1.8mm; font-size: 7.4pt; color: #3b463f; background: #fafbfa }
+.impact { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 4mm }
+.impact b { display: block; font-size: 15pt; font-weight: 800; color: #17251d; line-height: 1.15 }
+.impact small { font-size: 7.4pt; color: #5d6b63 }
+.stack h4 { font-size: 7pt; letter-spacing: 1.2px; color: #4f5d55; font-weight: 700; margin: 2.6mm 0 1.4mm; text-transform: uppercase }
+.stack h4:first-child { margin-top: 0 }
+.stack .chips { margin-top: 0 }
+.stack .chip { background: #e3f1e7; border-color: #e3f1e7; color: #1f3d2c; font-size: 7.5pt }
+ul.check { list-style: none }
+ul.check li { position: relative; padding-left: 4.6mm; margin-bottom: 1.4mm; font-size: 8.7pt }
+ul.check li::before { content: "✓"; position: absolute; left: 0; color: #2f8a5a; font-weight: 700 }
+.edu { margin-bottom: 3mm }
+.edu b { display: block; font-size: 9pt; line-height: 1.3 }
+.edu small { color: #6b7a71; font-size: 8pt }
+.proj { border: 1px solid #e3e8e5; border-left: 2.5px solid #2b7350; border-radius: 1.5mm; padding: 2.6mm 3.4mm; margin-bottom: 2.6mm }
+.proj .top { display: flex; justify-content: space-between; align-items: baseline }
+.proj b { font-size: 9.2pt }
+.proj .date { font-size: 7.8pt; color: #5d6b63 }
+.proj p { font-size: 8.4pt; color: #3e4c44; margin-top: .8mm }
+.foot { position: absolute; left: 14mm; right: 14mm; bottom: 7mm; border-top: 1px solid #e3e8e5; padding-top: 2mm;
+        display: flex; justify-content: space-between; font-size: 7.2pt; color: #8a968f }
+ul.b.side li { font-size: 8.5pt }
+.ref { font-size: 9pt; color: #2c3a32 }
 
-      <div class="two-col">
-        <aside class="sidebar">
-          <div class="panel">
-            <h2>Profile</h2>
-            <p>Full-stack platform engineer and team lead with 10+ years shipping data, GIS and time-series products for agriculture and other domains.</p>
-          </div>
-          <div class="panel">
-            <h2>Core stack</h2>
-            <ul class="list">
-              <li>Node.js / TypeScript</li>
-              <li>Vue / React / Next.js</li>
-              <li>NestJS / GraphQL / REST</li>
-              <li>AWS Lambda / ECS / Fargate</li>
-              <li>PostgreSQL / TimescaleDB / PostGIS</li>
-              <li>Mapbox / GeoJSON / GIS</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h2>Certifications</h2>
-            <ul class="list">
-              <li>TripleByte Certified Back-end Developer (Advanced)</li>
-              <li>TripleByte Certified Front-end Developer (Professional)</li>
-              <li>AWS Certified Developer – Associate (in progress)</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h2>Work rights</h2>
-            <p class="location">Full work rights in Australia</p>
-            <p class="muted">No sponsorship required</p>
-          </div>
-        </aside>
+@media screen {
+  html, body { background: #e8efe9 }
+  body { padding: 72px 16px 40px }
+  .page { margin: 0 auto 24px; box-shadow: 0 6px 28px rgba(15, 50, 30, .16); border-radius: 4px }
+  .cvbar { position: fixed; top: 0; left: 0; right: 0; z-index: 10; display: flex; gap: 10px; justify-content: center;
+           align-items: center; padding: 12px 16px; background: #0d3f27; font-family: Inter, sans-serif }
+  .cvbar a, .cvbar button { font: 600 14px Inter, sans-serif; color: #0d3f27; background: #b4ec6c; border: 0; border-radius: 999px;
+           padding: 9px 18px; text-decoration: none; cursor: pointer }
+  .cvbar a.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.4) }
+}
+@media screen and (max-width: 860px) {
+  body { padding: 64px 8px 24px }
+  .page { margin-bottom: 12px }
+  .cvbar { gap: 6px; padding: 10px 8px }
+  .cvbar a, .cvbar button { font-size: 13px; padding: 8px 12px }
+}
+@media print { .cvbar { display: none } body { padding: 0 } }
+</style></head><body><nav class="cvbar"><a class="ghost" href="index.html">&larr; Portfolio</a><a href="Saurav-Pokharel-CV.pdf" download>Download PDF</a><button type="button" onclick="window.print()">Print</button></nav>
+<script>(function(){var P=function(){return document.querySelectorAll(".page")};function fit(){var z=Math.min(1,(document.documentElement.clientWidth-16)/794);P().forEach(function(p){p.style.zoom=z<1?z:""})}function reset(){P().forEach(function(p){p.style.zoom=""})}document.addEventListener("DOMContentLoaded",fit);addEventListener("resize",fit);addEventListener("beforeprint",reset);addEventListener("afterprint",fit)})();</script>
 
-        <main class="content">
-          <section>
-            <h2>Experience</h2>
-            <div class="job">
-              <div class="job-header">
-                <h3>Full Stack Developer (Team Lead)</h3>
-                <div class="when">Jul 2025 – Present</div>
-              </div>
-              <div class="muted">AxisTech Pty Ltd · Perth, WA</div>
-              <p>Lead 5–10 developers building AgTech products for clients across Australia, including vineyard management, farm-safety compliance, time-series pipelines and GIS layers.</p>
-            </div>
-            <div class="job">
-              <div class="job-header">
-                <h3>Associate Engineering Manager</h3>
-                <div class="when">Feb 2024 – May 2025</div>
-              </div>
-              <div class="muted">EB Pearls · Sydney, NSW · Kathmandu office</div>
-              <p>Owned MERN-stack architecture and code standards, ran Agile delivery, and managed and mentored 5–10 developers.</p>
-            </div>
-            <div class="job">
-              <div class="job-header">
-                <h3>Development Team Lead</h3>
-                <div class="when">Feb 2019 – Feb 2024</div>
-              </div>
-              <div class="muted">EB Pearls · Sydney, NSW · Kathmandu office</div>
-              <p>Promoted from Senior Developer. Moved the back end to Node.js and NestJS and designed microservices on AWS Fargate.</p>
-            </div>
-          </section>
-
-          <section>
-            <h2>Selected projects</h2>
-            <ul class="list">
-              <li>Vineyard data management platform with weather, crop-health, alerts and role-based grower access.</li>
-              <li>Time-series data platform for per-vineyard device ingestion, ETL and dashboarding.</li>
-              <li>Field scoring and scenario planning with GeoJSON layers and shareable maps.</li>
-              <li>Regional risk-mapping network for growers to collaborate on spray and bushfire risk overlays.</li>
-              <li>Video dating platform with matching, lobby pairing, WebSocket activity and AWS deployment.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2>Education</h2>
-            <p><strong>Bachelor of Engineering</strong> – Electronics &amp; Communication, Kathmandu Engineering College</p>
-          </section>
-        </main>
-      </div>
-    </div>
-  </body>
-</html>
+<div class="page"><header><h1>Saurav Pokharel</h1><div class="title">Senior Full-Stack Developer · Node.js, Vue/React &amp; AWS Serverless · AI Integrations</div><div class="contact"><span><svg viewBox="0 0 24 24"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>0452 303 312</span><span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>saurav65069@gmail.com</span><span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>linkedin.com/in/sauravpokharel</span><span><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Bentley, Perth WA</span><span class="wr"><svg viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>Full work rights in Australia · Subclass 485 Graduate visa, valid till 2030 · no sponsorship needed</span></div></header>
+<div class="cols"><main>
+<section><h2>Profile</h2><p class="profile">Senior full-stack developer and team lead with <b>10+ years</b> in software delivery, leading development teams since 2019. Sets architecture, code standards and delivery approach while staying hands-on in Node.js, NestJS, GraphQL, Vue and React on serverless and container-based AWS. Currently leads AgTech data, time-series and GIS products at AxisTech in Perth; previously grew from Senior Developer to Associate Engineering Manager at Sydney-based EB Pearls, leading 5–10 developers. Integrates AI (Claude, ChatGPT, LangChain/Ollama) into products and delivery.</p><div class="cards"><div class="card"><b>Led delivery teams</b>Mentored 5–10 developers; promoted to Associate Engineering Manager</div><div class="card"><b>Scaled with microservices</b>NestJS + Apollo Federation, RabbitMQ and gRPC on AWS Fargate</div><div class="card"><b>Built AgTech data platforms</b>Time-series pipelines for remote field devices on AWS serverless</div></div></section>
+<section><h2>Experience</h2><div class="job"><div class="top"><h3>Full Stack Developer (Team Lead)</h3><span class="date">Jul 2025 – Present</span></div><div class="co">AxisTech Pty Ltd <span>· Perth, WA</span></div><div class="desc">AgTech software company building data and compliance platforms for agribusiness across Australia.</div><ul class="b"><li>Lead a team of <b>5–10 developers</b> and own architecture and delivery of AgTech data products with agricultural clients</li><li>Led a five-person team through the six-month build of a <b>vineyard data management platform</b>: admin portal, grower Data Hub and serverless API</li><li>Delivered a <b>farm-safety compliance platform</b> (forms, registers, role-based organisations) across four apps on one API</li><li>Engineered <b>time-series data pipelines</b> for remote hardware devices on AWS Lambda, API Gateway and PostgreSQL</li><li>Built a <b>field scoring and scenario-planning</b> app and GIS risk layers for bushfire and spray (GeoJSON, Mapbox), plus a dealer portal</li><li>Prototyped a <b>smallholder supply-chain platform</b> for ~2,000 growers (Next.js PWA, Prisma, PostGIS)</li></ul><div class="chips"><span class="chip">Node.js</span><span class="chip">TypeScript</span><span class="chip">Vue 3</span><span class="chip">GraphQL</span><span class="chip">Lambda</span><span class="chip">PostgreSQL</span><span class="chip">TypeORM</span></div></div></section></main>
+<aside><section><h2>Impact</h2><div class="impact"><div><b>10+</b><small>years full-stack</small></div><div><b>5–10</b><small>engineers led</small></div><div><b>6</b><small>AgTech platforms led</small></div><div><b>2023</b><small>Leader of Tomorrow award</small></div></div></section>
+<section class="stack"><h2>Tech stack</h2><h4>Backend</h4><div class="chips"><span class="chip">Node.js</span><span class="chip">TypeScript</span><span class="chip">NestJS</span><span class="chip">Express</span><span class="chip">GraphQL</span><span class="chip">REST</span><span class="chip">Laravel / PHP</span><span class="chip">WordPress</span><span class="chip">Python / FastAPI</span></div><h4>Frontend</h4><div class="chips"><span class="chip">Vue 3</span><span class="chip">Vuex</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Redux</span><span class="chip">Micro-frontends</span></div><h4>AWS</h4><div class="chips"><span class="chip">Lambda</span><span class="chip">API Gateway</span><span class="chip">DynamoDB</span><span class="chip">S3</span><span class="chip">SES / SNS</span><span class="chip">CloudFront</span><span class="chip">ECS Fargate</span><span class="chip">EC2</span><span class="chip">CloudFormation</span><span class="chip">CodePipeline</span></div><h4>Data</h4><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Elasticsearch</span><span class="chip">Supabase</span><span class="chip">Firebase</span><span class="chip">TypeORM</span><span class="chip">Prisma</span></div><h4>Architecture &amp; messaging</h4><div class="chips"><span class="chip">Apollo Federation</span><span class="chip">RabbitMQ</span><span class="chip">Kafka</span><span class="chip">gRPC</span><span class="chip">Saga / CQRS</span></div><h4>DevOps &amp; quality</h4><div class="chips"><span class="chip">Docker</span><span class="chip">GitHub / Bitbucket</span><span class="chip">CircleCI</span><span class="chip">SonarQube</span><span class="chip">Prometheus</span><span class="chip">Grafana</span></div><h4>AI integrations</h4><div class="chips"><span class="chip">Claude API</span><span class="chip">ChatGPT API</span><span class="chip">LangChain</span><span class="chip">Ollama</span><span class="chip">Imagen</span></div></section>
+</aside></div><div class="foot"><span>Saurav Pokharel · Senior Full-Stack Developer</span><span>1 / 2</span></div></div>
+<div class="page page2"><div class="cols"><main><section><h2>Experience (continued)</h2><div class="job"><div class="top"><h3>Associate Engineering Manager</h3><span class="date">Feb 2024 – May 2025</span></div><div class="co">EB Pearls <span>· Sydney, NSW · Kathmandu office</span></div><div class="desc">Sydney-based digital agency building web and mobile products.</div><ul class="b"><li>Owned <b>MERN-stack</b> architecture decisions and code standards enforced through <b>SonarQube</b></li><li>Managed and mentored <b>5–10 developers</b>; supported hiring, onboarding and conflict resolution</li><li>Ran Agile delivery, testing and CI/CD across concurrent client projects; aligned stakeholders on strategy and requirements</li></ul><div class="chips"><span class="chip">Node.js</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">MongoDB</span><span class="chip">SonarQube</span><span class="chip">CI/CD</span></div></div><div class="job"><div class="top"><h3>Development Team Lead (from Senior Developer)</h3><span class="date">Feb 2019 – Feb 2024</span></div><div class="co">EB Pearls <span>· Sydney, NSW · Kathmandu office</span></div><ul class="b"><li>Grew from Senior Developer to Team Lead; moved the team's back end from Laravel to <b>Node.js, Express and NestJS</b></li><li>Architected <b>microservices</b> with NestJS and <b>Apollo Federation</b>, RabbitMQ, gRPC, Saga and CQRS patterns</li><li>Containerised with <b>Docker</b> and orchestrated on <b>AWS Fargate</b> via CodePipeline; monitored with Prometheus and Grafana</li><li>Recognised with the <b>Leader of Tomorrow</b> award (2023) and promoted to Associate Engineering Manager</li></ul><div class="chips"><span class="chip">NestJS</span><span class="chip">Apollo Federation</span><span class="chip">RabbitMQ</span><span class="chip">gRPC</span><span class="chip">Fargate</span><span class="chip">MongoDB</span></div></div></section>
+<section><h2>Selected projects</h2><div class="proj"><div class="top"><b>Vineyard data management platform</b><span class="date">AxisTech · 2025 – Present</span></div><p>Grower Data Hub for Australian vineyards: weather from Jane&#x27;s Weather, BOM and SILO; soil; bud, leaf, petiole and tissue monitoring; disease risk; block-level yield maps and alerts. Vue 3 + GraphQL on AWS Lambda.</p></div><div class="proj"><div class="top"><b>Time-series data platform</b><span class="date">AxisTech · 2025 – Present</span></div><p>Serverless adapter ingesting weather, soil and plant sensors, camera tags and BOM datasets into a TimescaleDB-style Postgres, with a schema per vineyard created at runtime, ETL and alert policies.</p></div><div class="proj"><div class="top"><b>Field scoring &amp; scenario planning</b><span class="date">AxisTech · 2025 – Present</span></div><p>Field-level scoring and scenario-planning app: GeoJSON layers indexed into grid/cell/value rows with generated legends; growers test practices against season data. Vue 3, Lambda, Postgres.</p></div><div class="proj"><div class="top"><b>Regional risk-mapping network</b><span class="date">AxisTech · 2025 – Present</span></div><p>Shared Mapbox maps for grower networks with weather, water, soil, spray-risk and bushfire-risk layers driven by time-series device data, plus device sharing and invitations.</p></div><div class="proj"><div class="top"><b>Video dating platform</b><span class="date">EB Pearls · 2024</span></div><p>Led the back end and client communication. Two-minute video-call lobby matching on ~30 preferences; NestJS microservices, Apollo Federation, RabbitMQ and Socket.IO on AWS Fargate.</p></div></section>
+</main>
+<aside><section><h2>Leadership</h2><ul class="check"><li>Leading teams of 5–10 developers</li><li>Mentoring, hiring &amp; onboarding</li><li>Agile / Scrum delivery</li><li>Architecture &amp; code standards</li><li>Stakeholder &amp; client planning</li><li>Release quality &amp; CI/CD</li></ul></section><section><h2>Education</h2><div class="edu"><b>Bachelor of Engineering (Electronics &amp; Communication)</b><small>Kathmandu Engineering College · Kathmandu, Nepal</small></div><div class="edu"><b>Serverless with AWS</b><small>Udemy · 2022</small></div><div class="edu"><b>Microservices with Node.js</b><small>Udemy · 2021</small></div><div class="edu"><b>Node.js Advanced Concepts</b><small>Udemy · 2016</small></div></section>
+<section><h2>Certifications</h2><ul class="check"><li>AWS Certified Developer – Associate (in progress)</li><li>TripleByte Certified Back-end Developer – Advanced</li><li>TripleByte Certified Front-end Developer – Professional</li></ul></section>
+<section><h2>Awards</h2><ul class="check"><li>The Leader of Tomorrow – EB Pearls, 2023 (with promotion to Associate Engineering Manager)</li></ul></section>
+<section><h2>Languages</h2><ul class="check"><li>English — professional</li><li>Nepali — native</li></ul></section><section><h2>Earlier career</h2><ul class="b side"><li><b>50+ custom WordPress apps</b> built 2014 – 2019</li><li><b>Software Engineer</b>, WP Creative, Sydney · 2016 – 2019</li><li><b>Software Developer</b>, Grepsr · 2016 — scraping plugins, Python data ingestion</li><li><b>Software Developer</b>, ICN Nepal · 2014 – 2016</li></ul></section><section><h2>Referees</h2><p class="ref">Available on request.</p></section>
+</aside></div><div class="foot"><span>Saurav Pokharel · Senior Full-Stack Developer</span><span>2 / 2</span></div></div></body></html>
